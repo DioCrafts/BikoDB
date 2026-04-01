@@ -1,0 +1,27 @@
+# =============================================================================
+# bikodb-core — Tipos fundamentales del motor de Knowledge Graph
+# =============================================================================
+# Este crate NO tiene dependencias en otros crates de BikoDB.
+# Todos los demás crates dependen de éste.
+# Contiene: NodeId, EdgeId, RID, Property, Value, errores, constantes.
+# =============================================================================
+
+[package]
+name = "bikodb-core"
+version = "0.1.0"
+edition = "2021"
+description = "Core types for BikoDB Knowledge Graph Engine"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+bincode = { workspace = true }
+thiserror = { workspace = true }
+smallvec = { workspace = true }
+byteorder = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+bitflags = { workspace = true }
+
+[dev-dependencies]
+criterion = { workspace = true }

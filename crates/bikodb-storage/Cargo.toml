@@ -1,0 +1,19 @@
+[package]
+name = "bikodb-storage"
+version = "0.1.0"
+edition = "2021"
+description = "Storage engine for BikoDB: pages, WAL, mmap, indexes"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+serde = { workspace = true }
+bincode = { workspace = true }
+memmap2 = { workspace = true }
+parking_lot = { workspace = true }
+crossbeam = { workspace = true }
+dashmap = { workspace = true }
+lz4_flex = { workspace = true }
+ahash = { workspace = true }
+byteorder = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }

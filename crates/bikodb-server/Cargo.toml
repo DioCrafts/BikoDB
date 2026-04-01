@@ -1,0 +1,21 @@
+[package]
+name = "bikodb-server"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Server: HTTP/REST and protocol stubs"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-graph = { path = "../bikodb-graph" }
+bikodb-execution = { path = "../bikodb-execution" }
+bikodb-query = { path = "../bikodb-query" }
+bikodb-resource = { path = "../bikodb-resource" }
+bikodb-ai = { path = "../bikodb-ai" }
+bikodb-cluster = { path = "../bikodb-cluster" }
+serde.workspace = true
+serde_json.workspace = true
+parking_lot.workspace = true
+tokio.workspace = true
+axum.workspace = true
+tower.workspace = true
+tower-http.workspace = true

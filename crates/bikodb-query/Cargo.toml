@@ -1,0 +1,10 @@
+[package]
+name = "bikodb-query"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Query parsers: SQL graph dialect and Cypher → LogicalOp"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-execution = { path = "../bikodb-execution" }
+thiserror.workspace = true

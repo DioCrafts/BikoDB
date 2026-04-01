@@ -1,0 +1,17 @@
+[package]
+name = "bikodb-node"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Node.js bindings via FFI"
+
+[lib]
+name = "bikodb_node"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-server = { path = "../bikodb-server" }
+bikodb-graph = { path = "../bikodb-graph" }
+serde.workspace = true
+serde_json.workspace = true
+parking_lot.workspace = true

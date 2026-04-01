@@ -1,0 +1,101 @@
+# =============================================================================
+# BikoDB — High-Performance Knowledge Graph Engine
+# =============================================================================
+# Workspace raíz que coordina todos los crates del motor.
+#
+# Arquitectura de crates:
+#   bikodb-core       → Tipos fundamentales (NodeId, EdgeId, Property, RID, errores)
+#   bikodb-storage    → Storage engine: pages, buckets, WAL, mmap, delta encoding
+#   bikodb-graph      → Graph engine: traversals (BFS/DFS), mutations, edge segments
+#   bikodb-execution  → Execution engine: query planner, operators, pipeline
+#   bikodb-query      → Query layer: SQL, Cypher, Gremlin parsers → plan lógico
+#   bikodb-ai         → AI/ML layer: embeddings, vector index (HNSW), GNN stubs
+#   bikodb-resource   → Resource manager: cache, prefetching, CPU/RAM/disk monitor
+#   bikodb-cluster    → Cluster layer: sharding, replicación, balanceo de carga
+#   bikodb-server     → Server: HTTP/REST, Bolt, protocolos de red
+#   bikodb-bench      → Benchmarks y comparativas (LDBC Graphalytics)
+# =============================================================================
+
+[workspace]
+resolver = "2"
+members = [
+    "crates/bikodb-core",
+    "crates/bikodb-storage",
+    "crates/bikodb-graph",
+    "crates/bikodb-execution",
+    "crates/bikodb-query",
+    "crates/bikodb-ai",
+    "crates/bikodb-resource",
+    "crates/bikodb-cluster",
+    "crates/bikodb-server",
+    "crates/bikodb-bench",
+    "crates/bikodb-python",
+    "crates/bikodb-node",
+]
+
+# ── Dependencias compartidas (workspace-level) ──────────────────────────────
+# Se referencian desde cada crate con `workspace = true`.
+[workspace.dependencies]
+# Serialización
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+bincode = "1"
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# HTTP / REST
+axum = "0.8"
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors"] }
+
+# Logging / tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Concurrencia lock-free
+crossbeam = "0.8"
+parking_lot = "0.12"
+dashmap = "6"
+rayon = "1.10"
+
+# Memory-mapped files
+memmap2 = "0.9"
+
+# Hashing rápido
+ahash = "0.8"
+xxhash-rust = { version = "0.8", features = ["xxh3"] }
+
+# Compresión
+lz4_flex = "0.11"
+
+# Errores ergonómicos
+thiserror = "2"
+anyhow = "1"
+
+# Utilidades
+bytes = "1"
+byteorder = "1"
+rand = "0.8"
+uuid = { version = "1", features = ["v4"] }
+smallvec = { version = "1", features = ["serde"] }
+bumpalo = { version = "3", features = ["collections"] }
+bitflags = "2"
+
+# Benchmarking
+criterion = { version = "0.5", features = ["html_reports"] }
+
+# Temporal
+chrono = { version = "0.4", features = ["serde"] }
+
+# ── Perfil de release optimizado ────────────────────────────────────────────
+[profile.release]
+opt-level = 3
+lto = "fat"           # Link-Time Optimization completo
+codegen-units = 1     # Máxima optimización intra-crate
+strip = true          # Eliminar símbolos de debug
+panic = "abort"       # Sin overhead de unwind
+
+[profile.bench]
+inherits = "release"
+debug = true          # Perfiles con flamegraph

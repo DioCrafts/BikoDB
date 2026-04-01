@@ -1,0 +1,11 @@
+[package]
+name = "bikodb-execution"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Execution engine: query planner, operators, pipeline"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-graph = { path = "../bikodb-graph" }
+smallvec.workspace = true
+rayon.workspace = true

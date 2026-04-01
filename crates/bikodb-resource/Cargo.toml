@@ -1,0 +1,10 @@
+[package]
+name = "bikodb-resource"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Resource manager: cache, prefetching, monitoring"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+parking_lot.workspace = true
+rayon.workspace = true

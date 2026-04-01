@@ -1,0 +1,18 @@
+[package]
+name = "bikodb-graph"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Graph engine: traversals, mutations, adjacency representation"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-storage = { path = "../bikodb-storage" }
+parking_lot.workspace = true
+dashmap.workspace = true
+ahash.workspace = true
+smallvec.workspace = true
+crossbeam.workspace = true
+rayon.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true

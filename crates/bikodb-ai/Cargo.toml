@@ -1,0 +1,10 @@
+[package]
+name = "bikodb-ai"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — AI/ML layer: embeddings, vector index (HNSW), GNN stubs"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+parking_lot.workspace = true
+rand.workspace = true

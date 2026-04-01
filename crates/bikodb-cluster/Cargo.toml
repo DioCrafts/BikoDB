@@ -1,0 +1,11 @@
+[package]
+name = "bikodb-cluster"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Cluster layer: sharding, replication, fault tolerance, load balancing"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-graph = { path = "../bikodb-graph" }
+serde.workspace = true
+parking_lot.workspace = true

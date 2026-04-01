@@ -1,0 +1,34 @@
+[package]
+name = "bikodb-bench"
+version = "0.1.0"
+edition = "2021"
+description = "BikoDB — Benchmarks and comparisons"
+
+[dependencies]
+bikodb-core = { path = "../bikodb-core" }
+bikodb-graph = { path = "../bikodb-graph" }
+bikodb-execution = { path = "../bikodb-execution" }
+bikodb-server = { path = "../bikodb-server" }
+bikodb-ai = { path = "../bikodb-ai" }
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[[bench]]
+name = "graph_bench"
+harness = false
+
+[[bench]]
+name = "ldbc_graphalytics"
+harness = false
+
+[[bench]]
+name = "comparison"
+harness = false
+
+[[bin]]
+name = "comparison_report"
+path = "src/bin/comparison_report.rs"
+
+[dev-dependencies]
+criterion.workspace = true
