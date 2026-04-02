@@ -217,7 +217,7 @@ const node = bikodb.bikodb_node_add_node(db, 1);
 
 ```bash
 # Clone
-git clone https://github.com/your-org/bikodb.git
+git clone https://github.com/DioCrafts/bikodb.git
 cd bikodb
 
 # Build (requires Rust 1.93+)
